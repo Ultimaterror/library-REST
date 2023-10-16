@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
   res.json({ message: "Hey, I'm Tom, the API" });
 });
 
+const booksRouter = require('./routers/booksRouter');
+app.use('/books', booksRouter);
+
+const authorsRouter = require('./routers/authorsRouter');
+app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

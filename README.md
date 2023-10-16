@@ -7,8 +7,9 @@ Install all dependencies : `npm i`
 Create a copy of `.env.sample` named `.env`  
 Modify the .env with correct identifiers
 
-Migrate DB : `npx prisma migrate dev`  
+Migrate DB : `npx prisma migrate deploy`  
 *You may need to wait a little for the DB to be fully launched.*
+*There may be errors with privileges.*
 
 Start the server : `npm start` or `npm run dev`
 
