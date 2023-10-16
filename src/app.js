@@ -31,6 +31,9 @@ app.get('/', (req, res) => {
 const booksRouter = require('./routers/booksRouter');
 app.use('/books', booksRouter);
 
+const authorsRouter = require('./routers/authorsRouter');
+app.use('/authors', authorsRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
