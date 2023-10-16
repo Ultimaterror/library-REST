@@ -11,5 +11,43 @@ datasource db {
 }
 
 model Author {
-  id Int @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
+  firstname String
+  lastname  String
+  books     Book[]
+}
+
+model Book {
+  id          Int        @id @default(autoincrement())
+  ISBN        BigInt
+  title       String
+  description String     @db.Text
+  img_path    String?
+  author      Author?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId    Int?
+  genres      Genre[]
+  borrowed    Borrowed[]
+}
+
+model Genre {
+  id    Int    @id @default(autoincrement())
+  name  String
+  books Book[]
+}
+
+model Borrowed {
+  id           Int       @id @default(autoincrement())
+  book         Book      @relation(fields: [bookId], references: [id])
+  bookId       Int
+  user         User      @relation(fields: [userId], references: [id])
+  userId       Int
+  borrowedDate DateTime  @default(now())
+  returnDate   DateTime?
+}
+
+model User {
+  id            Int        @id @default(autoincrement())
+  email         String     @unique
+  password      String     @db.VarChar(255)
+  booksBorrowed Borrowed[]
 }
