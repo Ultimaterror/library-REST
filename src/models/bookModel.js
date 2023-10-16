@@ -22,12 +22,12 @@ const insertBook = async (data) => {
 
 const fetchBook = async () => {
     try {
-        const book = await prisma.book.findMany({
+        const books = await prisma.book.findMany({
             include: {
                 author: true
             }
         });
-        return { status: 200, data: book };
+        return { status: 200, data: books };
     } catch (error) {
         console.error(error);
         return { status: 500, data: "Error fetching the books" };
