@@ -11,5 +11,18 @@ datasource db {
 }
 
 model Author {
-  id Int @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
+  firstname String
+  lastname  String
+  books     Book[]
+}
+
+model Book {
+  id          Int     @id @default(autoincrement())
+  ISBN        BigInt
+  title       String
+  description String  @db.Text
+  img_path    String?
+  Author      Author?  @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId    Int?
 }
