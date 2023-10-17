@@ -23,6 +23,7 @@ const fetchOneBookController = async (req, res) => {
 };
 
 const updateBookController = async (req, res) => {
+    // Call API for book by ISBN
     const { status, data } = await updateBook(req.params.id, req.body);
     res.status(status).send(data);
 };
