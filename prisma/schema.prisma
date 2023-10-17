@@ -19,7 +19,7 @@ model Author {
 
 model Book {
   id          Int        @id @default(autoincrement())
-  ISBN        BigInt
+  ISBN        String     @unique @db.VarChar(13)
   title       String
   description String     @db.Text
   img_path    String?
